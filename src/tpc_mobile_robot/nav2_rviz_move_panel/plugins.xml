@@ -1,0 +1,9 @@
+<library path="libMovePanel">
+  <class name="MovePanel"
+         type="MovePanel"
+         base_class_type="rviz_common::Panel">
+    <description>
+      Custom Panel to send goals to Nav2.
+    </description>
+  </class>
+</library>

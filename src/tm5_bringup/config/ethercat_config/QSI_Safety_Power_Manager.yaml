@@ -1,0 +1,48 @@
+# Configuration file for QSI Safety Power Manager (AIx2, AOx1, DIx16, DOx16)
+vendor_id: 0x00000794
+product_id: 0x01081e03
+assign_activate: 0x0300  # DC Synch register
+auto_fault_reset: true  # true = automatic fault reset, false = fault reset on rising edge command interface "reset_fault"
+
+#sdo:  # sdo data to be transferred at drive startup
+#  - {index: 0x60C2, sub_index: 1, type: int8, value: 10} # Set interpolation time for cyclic modes to 10 ms
+#  - {index: 0x60C2, sub_index: 2, type: int8, value: -3} # Set base 10-3s
+  #- {index: 0x6098, sub_index: 0, type: int8, value: 35}
+rpdo:  # RxPDO = receive PDO Mapping
+  - index: 0x1600
+    channels:
+      - {index: 0x8000, sub_index: 0, type: uint16, default: 0}  # Control word  16
+      - {index: 0x8000, sub_index: 2, type: uint16, default: 0}  # Control Ex  16
+      #- {index: 0x7000, sub_index: 0, type: uint16}   # 16-bit Digital Outputs  16
+      #- {index: 0x7010, sub_index: 0, type: uint16}  # 16-bit Analog Output Channel 1  16
+      #- {index: 0x8033, sub_index: 0, type: uint32}  # LED Parameters  32
+      #- {index: 0x8034, sub_index: 0, type: uint8}  # LED Command    8
+      #- {index: 0x8003, sub_index: 0, type: uint16}  # LCD Message Composing    16
+      #- {index: 0x8010, sub_index: 0, type: int32, default: 2}  # Set I/O Configuration   32
+tpdo:  # TxPDO = transmit PDO Mapping
+  - index: 0x1a00
+    channels:
+      - {index: 0x9000, sub_index: 0, type: uint16}  # Status    16
+      #- {index: 0x9000, sub_index: 2, type: uint16}  # Status Ex    16
+      #- {index: 0x6000, sub_index: 0, type: uint16}  # 16-bit Digital Inputs    16
+      #- {index: 0x6010, sub_index: 0, type: uint16}  # 16-bit Analog Input Channel 1    16
+      #- {index: 0x6011, sub_index: 0, type: uint16}  # 16-bit Analog Input Channel 2    16
+      #- {index: 0x6020, sub_index: 0, type: int32}  # External 24V Voltage (V)     32
+      #- {index: 0x6021, sub_index: 0, type: int32}  # Internal 24V Current (A)     32
+      #- {index: 0x6022, sub_index: 0, type: uint16}  # Managed 48V Voltage (V)     32
+      #- {index: 0x6023, sub_index: 0, type: int32}  # 48V Current (A)     32
+      #- {index: 0x6025, sub_index: 0, type: uint16}  # 48V Avg Consumed Power (W)     32
+      #- {index: 0x6024, sub_index: 0, type: int32}  # Temperature (Celsius)     32
+      #- {index: 0x9002, sub_index: 0, type: uint32}  # PDO Packet Count     32
+      #- {index: 0x9003, sub_index: 0, type: int32}  # PDO Packet Rate (Hz)     32
+      #- {index: 0x9004, sub_index: 0, type: uint16}  # PDO Cycle Time (us)    16
+      #- {index: 0x9005, sub_index: 0, type: uint16}  # PDO Max Cycle Time (us)    16
+      #- {index: 0x9006, sub_index: 0, type: uint16}  # PDO Min Cycle Time (us)    16
+      #- {index: 0x8035, sub_index: 0, type: int8}  # LED Status    8
+      #- {index: 0x8004, sub_index: 0, type: int8}  # LCD Message Status    8
+      #- {index: 0x9010, sub_index: 0, type: int32}  # Configured I/O    32
+
+
+sm:  # Sync Manager
+  - {index: 0, type: output, pdo: rpdo, watchdog: enable}
+  - {index: 1, type: input, pdo: tpdo, watchdog: disable}

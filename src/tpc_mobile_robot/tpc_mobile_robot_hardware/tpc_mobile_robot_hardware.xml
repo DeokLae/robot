@@ -1,0 +1,9 @@
+<library path="tpc_mobile_robot_hardware">
+  <class name="tpc_mobile_robot_hardware/TpcMobileRobotSystemHardware"
+         type="tpc::tpc_mobile_robot_hardware::TpcMobileRobotSystemHardware"
+         base_class_type="hardware_interface::SystemInterface">
+    <description>
+      Add description
+    </description>
+  </class>
+</library>

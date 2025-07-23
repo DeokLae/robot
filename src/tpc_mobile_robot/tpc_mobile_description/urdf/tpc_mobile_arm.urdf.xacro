@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!-- tpc_mobile_ard robot -->
+<robot name="tpc_mobile_arm_robot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:arg name="initial_positions_file" default="$(find tpc_mobile_arm_moveit_config)/config/initial_positions.yaml" />
+  <xacro:arg name="prefix" default="" />
+  <xacro:arg name="use_sim" default="false" />
+
+  <xacro:arg name="use_fake_hardware" default="false" />
+  <xacro:arg name="fake_sensor_commands" default="false" />
+
+  <!-- Include tpc_mobile_robot urdf -->
+  <xacro:include filename="$(find tpc_mobile_arm_description)/urdf/tpc_mobile.urdf.xacro" />
+
+  <!-- Include tm5 robot rudf -->
+  <xacro:include filename="$(find tpc_mobile_arm_description)/urdf/tm5-700-nominal.urdf.xacro" />
+
+  <xacro:tpc_mobile/>
+  <joint name="base_fixed" type="fixed">
+    <parent link="base_link"/>
+    <child link="link_0"/>
+    <origin xyz="0 -0.15 0.23" rpy="0 0 -1.5707963267949"/>
+  </joint>
+  <xacro:tm5-700/>
+
+  <xacro:include filename="$(find tpc_mobile_arm_moveit_config)/config/tpc_mobile_arm_robot.ros2_control.xacro" />
+  <xacro:tpc_mobile_arm_robot_ros2_control initial_positions_file="$(arg initial_positions_file)" use_sim="$(arg use_sim)"/>
+  <xacro:include filename="$(find tpc_mobile_arm_moveit_config)/config/tpc_mobile_mecanum_robot.ros2_control.xacro" />
+  <xacro:tpc_mobile_mecanum_robot_ros2_control use_sim="$(arg use_sim)"/>
+
+
+  <gazebo>
+    <plugin name="gazebo_ros2_control" filename="libgazebo_ros2_control.so">
+      <parameters>$(find tpc_mobile_arm_bringup)/config/gazebo_controller_manager.yaml</parameters>
+    </plugin>
+  </gazebo>
+</robot>

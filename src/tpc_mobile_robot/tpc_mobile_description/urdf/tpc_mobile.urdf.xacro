@@ -1,0 +1,505 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com)
+     Commit Version: 1.5.1-0-g916b5db  Build Version: 1.5.7152.31018
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:macro name="tpc_mobile">
+    <link name="base_footprint">
+      <!--<origin xyz="0 0 0" rpy="0 0 1.5707963267949"/>-->
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+    </link>
+    <joint name="base_joint" type = "fixed">
+      <parent link="base_footprint"/>
+      <child link="base_link"/>
+      <origin xyz="0 0 0.010" rpy="0 0 1.5707963267949"/>
+      <!--<origin xyz="0 0 0.010" rpy="0 0 0"/>-->
+    </joint>
+
+    <link
+      name="base_link">
+      <inertial>
+        <origin
+          xyz="0.00693931242570405 0.0581478434206181 0.104425990876566"
+          rpy="0 0 0" />
+        <mass
+          value="77.760480966684" />
+        <inertia
+          ixx="5.62693033795356"
+          ixy="0.0182578219978727"
+          ixz="-0.00581206213009567"
+          iyy="2.90547448551693"
+          iyz="0.121535088121286"
+          izz="7.38034314672877" />
+      </inertial>
+      <visual>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://tpc_mobile_description/meshes/mobile/base_link.STL"/>
+        </geometry>
+        <material
+          name="">
+          <color
+            rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+        </material>
+      </visual>
+      <collision>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://tpc_mobile_description/meshes/mobile/base_link.STL"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <joint
+      name="fr_left_wheel_joint"
+      type="continuous">
+      <origin
+        xyz="0.3495 -0.287 0.05"
+        rpy="1.5707963267949 0 0" />
+      <parent
+        link="base_link" />
+      <child
+        link="fr_left_wheel_link" />
+      <axis
+        xyz="1 0 0" />
+    </joint>
+    <link
+      name="fr_left_wheel_link">
+      <inertial>
+        <origin
+          xyz="0.000346711534812805 -9.55608986823175E-07 1.77275714663416E-08"
+          rpy="0 0 0" />
+        <mass
+          value="4.33590963632227" />
+        <inertia
+          ixx="0.0176981035324359"
+          ixy="-2.94870304124813E-07"
+          ixz="-4.42979462073601E-09"
+          iyy="0.0112841497948592"
+          iyz="-6.73288156401598E-10"
+          izz="0.0112841717903315" />
+      </inertial>
+      <visual>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://tpc_mobile_description/meshes/mobile/fr_left_wheel_link.STL"/>
+        </geometry>
+        <material
+          name="">
+          <color
+            rgba="0.686274509803922 0.658823529411765 0.63921568627451 1" />
+        </material>
+      </visual>
+      <collision>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://tpc_mobile_description/meshes/mobile/fr_left_wheel_link.STL"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <joint
+      name="fr_right_wheel_joint"
+      type="continuous">
+      <origin
+        xyz="-0.3495 -0.287 0.0500000000000001"
+        rpy="1.5707963267949 0 3.14159265358979" />
+      <parent
+        link="base_link" />
+      <child
+        link="fr_right_wheel_link" />
+      <axis
+        xyz="-1 0 0" />
+    </joint>
+
+    <link
+      name="fr_right_wheel_link">
+      <inertial>
+        <origin
+          xyz="0.000555635327338155 -6.92925583370418E-07 1.74224749133201E-06"
+          rpy="0 0 0" />
+        <mass
+          value="6.17811527090236" />
+        <inertia
+          ixx="0.0269359902916775"
+          ixy="-3.0705549696101E-07"
+          ixz="6.57121411959715E-09"
+          iyy="0.0173277806795012"
+          iyz="-1.48194960841761E-10"
+          izz="0.0173278258813899" />
+      </inertial>
+      <visual>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://tpc_mobile_description/meshes/mobile/fr_right_wheel_link.STL"/>
+        </geometry>
+        <material
+          name="">
+          <color
+            rgba="0.686274509803922 0.658823529411765 0.63921568627451 1" />
+        </material>
+      </visual>
+      <collision>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://tpc_mobile_description/meshes/mobile/fr_right_wheel_link.STL"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link
+      name="rr_left_wheel_link">
+      <inertial>
+        <origin
+          xyz="0.000555636107377633 -6.92709553697102E-07 1.74278912384862E-06"
+          rpy="0 0 0" />
+        <mass
+          value="6.17811533675191" />
+        <inertia
+          ixx="0.0269359905011406"
+          ixy="-3.06946707282213E-07"
+          ixz="6.43701517366416E-09"
+          iyy="0.0173277810497044"
+          iyz="-1.21551299626032E-10"
+          izz="0.0173278258317422" />
+      </inertial>
+      <visual>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://tpc_mobile_description/meshes/mobile/rr_left_wheel_link.STL" />
+        </geometry>
+        <material
+          name="">
+          <color
+            rgba="0.686274509803922 0.658823529411765 0.63921568627451 1" />
+        </material>
+      </visual>
+      <collision>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://tpc_mobile_description/meshes/mobile/rr_left_wheel_link.STL"/>
+        </geometry>
+      </collision>
+    </link>
+    <joint
+      name="rr_left_wheel_joint"
+      type="continuous">
+      <origin
+        xyz="0.3495 0.287 0.05"
+        rpy="1.5707963267949 0 0" />
+      <parent
+        link="base_link" />
+      <child
+        link="rr_left_wheel_link" />
+      <axis
+        xyz="1 0 0" />
+    </joint>
+    <link
+      name="rr_right_wheel_link">
+      <inertial>
+        <origin
+          xyz="0.000346711534812694 -9.5560898673297E-07 1.77275716883862E-08"
+          rpy="0 0 0" />
+        <mass
+          value="4.33590963632227" />
+        <inertia
+          ixx="0.0176981035324359"
+          ixy="-2.94870304133835E-07"
+          ixz="-4.42979462941641E-09"
+          iyy="0.0112841497948592"
+          iyz="-6.73288159979465E-10"
+          izz="0.0112841717903316" />
+      </inertial>
+      <visual>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://tpc_mobile_description/meshes/mobile/rr_right_wheel_link.STL"/>
+        </geometry>
+        <material
+          name="">
+          <color
+            rgba="0.686274509803922 0.658823529411765 0.63921568627451 1" />
+        </material>
+      </visual>
+      <collision>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://tpc_mobile_description/meshes/mobile/rr_right_wheel_link.STL"/>
+        </geometry>
+      </collision>
+    </link>
+    <joint
+      name="rr_right_wheel_joint"
+      type="continuous">
+      <origin
+        xyz="-0.3495 0.287 0.05"
+        rpy="1.5707963267949 0 3.14159265358979" />
+      <parent
+        link="base_link" />
+      <child
+        link="rr_right_wheel_link" />
+      <axis
+        xyz="-1 0 0" />
+    </joint>
+    <link
+      name="imu_link">
+      <inertial>
+        <origin
+          xyz="-2.30441111929629E-08 -6.16283038052094E-07 0.00494879862265194"
+          rpy="0 0 0" />
+        <mass
+          value="0.0117804617116584" />
+        <inertia
+          ixx="1.24424778618368E-06"
+          ixy="1.9223998905294E-12"
+          ixz="1.36019571723475E-12"
+          iyy="1.24427423107387E-06"
+          iyz="3.63163770754022E-11"
+          izz="2.29188401372467E-06" />
+      </inertial>
+      <visual>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 -1.5707963267949" />
+        <geometry>
+          <mesh
+            filename="package://tpc_mobile_description/meshes/mobile/imu_link.STL"/>
+        </geometry>
+        <material
+          name="">
+          <color
+            rgba="0.631372549019608 0.588235294117647 0.509803921568627 1" />
+        </material>
+      </visual>
+      <collision>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://tpc_mobile_description/meshes/mobile/imu_link.STL"/>
+        </geometry>
+      </collision>
+    </link>
+    <joint
+      name="imu_joint"
+      type="fixed">
+      <!--<origin
+        xyz="0 0 0.015"
+        rpy="0 0 -3.14159265358979" />-->
+      <origin
+        xyz="0 0 0.015"
+        rpy="0 0 -1.5707963267949" />
+      <parent
+        link="base_link" />
+      <child
+        link="imu_link" />
+      <axis
+        xyz="0 0 0" />
+    </joint>
+    <link
+      name="lidar_link">
+      <inertial>
+        <origin
+          xyz="0.00699357878189494 -0.0124078312863395 -1.26510654295333E-17"
+          rpy="0 0 0" />
+        <!--<origin xyz="0 0 0.0" rpy="0 0 0"/>-->
+        <mass
+          value="0.171083106224419" />
+        <inertia
+          ixx="7.43579717176282E-05"
+          ixy="-2.23273409182697E-05"
+          ixz="1.11950155886101E-20"
+          iyy="0.000140487783209557"
+          iyz="-4.38309804152537E-21"
+          izz="0.000121194388345582" />
+      </inertial>
+      <visual>
+        <origin
+          xyz="0 0 0"
+          rpy="-1.5707963267949 0 0" />
+        <geometry>
+          <mesh
+            filename="package://tpc_mobile_description/meshes/mobile/lidar_link.STL"/>
+        </geometry>
+        <material
+          name="">
+          <color
+            rgba="1 1 1 1" />
+        </material>
+      </visual>
+      <collision>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://tpc_mobile_description/meshes/mobile/lidar_link.STL"/>
+        </geometry>
+      </collision>
+    </link>
+    <joint
+      name="lidar_joint"
+      type="fixed">
+      <origin
+        xyz="0 -0.33 0.26"
+        rpy="0 0 -1.5707963267949" />
+      <parent
+        link="base_link" />
+      <child
+        link="lidar_link" />
+      <axis
+        xyz="0 0 0" />
+    </joint>
+
+    <gazebo reference="base_link">
+      <material>Gazebo/DarkGrey</material>
+    </gazebo>
+
+    <gazebo reference="fr_left_wheel_link">
+      <mu1>10000</mu1>
+      <mu2>10000</mu2>
+      <kp>500000.0</kp>
+      <kd>10.0</kd>
+      <minDepth>0.001</minDepth>
+      <maxVel>0.5</maxVel>
+      <fdir1>1 0 0</fdir1>
+      <material>Gazebo/FlatBlack</material>
+    </gazebo>
+    <gazebo reference="fr_right_wheel_link">
+      <mu1>10000</mu1>
+      <mu2>10000</mu2>
+      <kp>500000.0</kp>
+      <kd>10.0</kd>
+      <minDepth>0.001</minDepth>
+      <maxVel>0.5</maxVel>
+      <fdir1>1 0 0</fdir1>
+      <material>Gazebo/FlatBlack</material>
+    </gazebo>
+    <gazebo reference="rr_left_wheel_link">
+      <mu1>10000</mu1>
+      <mu2>10000</mu2>
+      <kp>500000.0</kp>
+      <kd>10.0</kd>
+      <minDepth>0.001</minDepth>
+      <maxVel>0.5</maxVel>
+      <fdir1>1 0 0</fdir1>
+      <material>Gazebo/FlatBlack</material>
+    </gazebo>
+    <gazebo reference="rr_right_wheel_link">
+      <mu1>10000</mu1>
+      <mu2>10000</mu2>
+      <kp>500000.0</kp>
+      <kd>10.0</kd>
+      <minDepth>0.001</minDepth>
+      <maxVel>0.5</maxVel>
+      <fdir1>1 0 0</fdir1>
+      <material>Gazebo/FlatBlack</material>
+    </gazebo>
+
+    <gazebo>
+      <plugin name="mecanum_drive" filename="libgazebo_ros_diff_drive.so">
+        <ros>
+          <namespace></namespace>
+          <remapping>cmd_vel:=cmd_vel</remapping>
+          <remapping>odom:=odom</remapping>
+        </ros>
+
+        <num_wheel_pairs>1</num_wheel_pairs>
+
+        <left_joint>fr_left_wheel_joint</left_joint>
+        <right_joint>fr_right_wheel_joint</right_joint>
+
+        <wheel_separation>0.6</wheel_separation>
+
+        <wheel_diameter>0.2</wheel_diameter>
+        <max_wheel_torque>20</max_wheel_torque>
+        <max_wheel_acceleration>1.0</max_wheel_acceleration>
+
+
+        <publish_odom>true</publish_odom>
+        <publish_odom_tf>true</publish_odom_tf>
+        <odometry_frame>odom</odometry_frame>
+        <robot_base_frame>base_footprint</robot_base_frame>
+      </plugin>
+    </gazebo>
+
+
+    <gazebo reference="imu_link">
+      <material>Gazebo/Grey</material>
+      <sensor type="imu" name="imu">
+        <always_on>true</always_on>
+        <update_rate>100.0</update_rate>
+        <visualize>true</visualize>
+      </sensor>
+    </gazebo>
+
+    <gazebo reference="lidar_link">
+      <material>Gazebo/FlatBlack</material>
+      <sensor type="ray" name="lds_lfcd_sensor">
+        <pose>0 0 0 0 0 0</pose>
+        <always_on>true</always_on>
+        <update_rate>5.0</update_rate>
+        <visualize>true</visualize>
+        <ray>
+          <scan>
+            <horizontal>
+              <samples>360</samples>
+              <resolution>1</resolution>
+              <min_angle>0.0</min_angle>
+              <max_angle>6.28319</max_angle>
+            </horizontal>
+          </scan>
+          <range>
+            <min>0.30</min>
+            <max>3.5</max>
+            <resolution>0.015</resolution>
+          </range>
+          <noise>
+            <type>gaussian</type>
+            <mean>0.0</mean>
+            <stddev>0.01</stddev>
+          </noise>
+        </ray>
+        <plugin name="gazebo_ros_lds_lfcd_controller" filename="libgazebo_ros_ray_sensor.so">
+          <ros>
+            <namespace></namespace>
+            <remapping>~/out:=scan</remapping>
+          </ros>
+          <output_type>sensor_msgs/LaserScan</output_type>
+        </plugin>
+      </sensor>
+    </gazebo>
+  </xacro:macro>
+</robot>

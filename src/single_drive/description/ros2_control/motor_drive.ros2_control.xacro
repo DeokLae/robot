@@ -1,0 +1,137 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:macro name="motor_drive">
+
+    <ros2_control name="motor_drive" type="system">
+      <hardware>
+        <plugin>ethercat_driver/EthercatDriver</plugin>
+        <param name="master_id">0</param>
+        <param name="control_frequency">300</param>
+      </hardware>
+
+      <gpio name="QSISafetyPowerManager">
+        <state_interface name="status"/>
+        <command_interface name="reset_fault"/>
+        <ec_module name="QSI_Safety_Power_Manager">
+          <plugin>ethercat_generic_plugins/GenericEcSlave</plugin>
+          <param name="alias">0</param>
+          <param name="position">0</param>
+          <param name="slave_config">$(find single_drive)/config/QSI_Safety_Power_Manager.yaml</param>
+        </ec_module>
+      </gpio>
+
+      <gpio name="Ebuscoupler">
+        <state_interface name="d_input"/>
+        <command_interface name="reset_fault"/>
+        <ec_module name="tm5_700_cpr1_b_config">
+          <plugin>ethercat_generic_plugins/GenericEcSlave</plugin>
+          <param name="alias">0</param>
+          <param name="position">1</param>
+          <param name="slave_config">$(find single_drive)/config/tm5_700_cpr1_b_config.yaml</param>
+        </ec_module>
+      </gpio>-
+
+      <!--<joint name="joint_1">
+        <state_interface name="position"/>
+        <command_interface name="position"/>
+        <command_interface name="reset_fault"/>
+        <ec_module name="joint_1">
+          <plugin>ethercat_generic_plugins/TmRobotCiA402Drive</plugin>
+          <param name="alias">0</param>
+          <param name="position">2</param>
+          <param name = "mode_of_operation">8</param>
+          <param name="slave_config">$(find single_drive)/config/tm5.yaml</param>
+        </ec_module>
+      </joint>
+
+      <joint name="joint_2">
+        <state_interface name="position"/>
+        <command_interface name="position"/>
+        <command_interface name="reset_fault"/>
+        <ec_module name="joint_2">
+          <plugin>ethercat_generic_plugins/TmRobotJoint2Drive</plugin>
+          <param name="alias">0</param>
+          <param name="position">3</param>
+          <param name = "mode_of_operation">8</param>
+          <param name="slave_config">$(find single_drive)/config/tm5.yaml</param>
+        </ec_module>
+      </joint>
+
+      <joint name="joint_3">
+        <state_interface name="position"/>
+        <command_interface name="position"/>
+        <command_interface name="reset_fault"/>
+        <ec_module name="joint_3">
+          <plugin>ethercat_generic_plugins/TmRobotJoint3Drive</plugin>
+          <param name="alias">0</param>
+          <param name="position">4</param>
+          <param name = "mode_of_operation">8</param>
+          <param name="slave_config">$(find single_drive)/config/tm5.yaml</param>
+        </ec_module>
+      </joint>-
+
+      <joint name="joint_4">
+        <state_interface name="position"/>
+        <command_interface name="position"/>
+        <command_interface name="reset_fault"/>
+        <ec_module name="joint_4">
+          <plugin>ethercat_generic_plugins/TmRobotJoint4Drive</plugin>
+          <param name="alias">0</param>
+          <param name="position">5</param>
+          <param name = "mode_of_operation">8</param>
+          <param name="slave_config">$(find single_drive)/config/tm5.yaml</param>
+        </ec_module>
+      </joint>
+
+      <joint name="joint_5">
+        <state_interface name="position"/>
+        <command_interface name="position"/>
+        <command_interface name="reset_fault"/>
+        <ec_module name="joint_5">
+          <plugin>ethercat_generic_plugins/TmRobotJoint5Drive</plugin>
+          <param name="alias">0</param>
+          <param name="position">6</param>
+          <param name = "mode_of_operation">8</param>
+          <param name="slave_config">$(find single_drive)/config/tm5.yaml</param>
+        </ec_module>
+      </joint>-->
+
+      <joint name="joint_6">
+        <state_interface name="position">
+        </state_interface>
+        <command_interface name="position"/>
+        <command_interface name="reset_fault"/>
+        <ec_module name="joint_6">
+          <plugin>ethercat_generic_plugins/TmRobotJoint6Drive</plugin>
+          <param name="alias">0</param>
+          <param name="position">7</param>
+          <param name = "mode_of_operation">8</param>
+          <param name="slave_config">$(find single_drive)/config/tm5_joint_6.yaml</param>
+        </ec_module>
+      </joint>
+
+      <gpio name="QSIMultiIO">
+        <command_interface name="reset_fault"/>
+        <ec_module name="QSIMultiIO">
+          <plugin>ethercat_generic_plugins/GenericEcSlave</plugin>
+          <param name="alias">0</param>
+          <param name="position">8</param>
+          <param name="slave_config">$(find single_drive)/config/QSI_MultiIO.yaml</param>
+        </ec_module>
+      </gpio>
+
+      <gpio name="QSISafetyMonitor">
+        <command_interface name="reset_fault"/>
+        <ec_module name="QSISafetyMonitor">
+          <plugin>ethercat_generic_plugins/GenericEcSlave</plugin>
+          <param name="alias">0</param>
+          <param name="position">9</param>
+          <param name="slave_config">$(find single_drive)/config/QSI_Safety_Monitor.yaml</param>
+        </ec_module>
+      </gpio>
+    </ros2_control>
+
+  </xacro:macro>
+
+</robot>

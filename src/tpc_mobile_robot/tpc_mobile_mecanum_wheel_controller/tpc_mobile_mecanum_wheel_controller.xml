@@ -1,0 +1,10 @@
+<library path="tpc_mobile_mecanum_wheel_controller">
+  <class name="tpc_mobile_mecanum_wheel_controller/TpcMobileMecanumController"
+    type="tpc::tpc_mobile_mecanum_wheel_controller::TpcMobileMecanumController"
+    base_class_type="controller_interface::ControllerInterface"
+  >
+    <description>
+      Drive controller for mecanumWheel
+    </description>
+  </class>
+</library>

@@ -1,0 +1,25 @@
+moveit_setup_assistant_config:
+  urdf:
+    package: tm5_description
+    relative_path: urdf/tm5-700-nominal.urdf
+  srdf:
+    relative_path: config/tm5-700.srdf
+  package_settings:
+    author_name: kdl
+    author_email: ejrqkrtk@naver.com
+    generated_timestamp: 1715133424
+  control_xacro:
+    command:
+      - position
+    state:
+      - position
+      - velocity
+  modified_urdf:
+    xacros:
+      - control_xacro
+  control_xacro:
+    command:
+      - position
+    state:
+      - position
+      - velocity

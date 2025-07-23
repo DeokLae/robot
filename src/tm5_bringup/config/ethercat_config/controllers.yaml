@@ -1,0 +1,58 @@
+controller_manager:
+  ros__parameters:
+    update_rate: 300  # Hz
+
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+
+    tm_arm_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+    velocity_controller:
+      type: velocity_controllers/JointGroupVelocityController
+
+    effort_controller:
+      type: effort_controllers/JointGroupEffortController
+
+tm_arm_controller:
+  ros__parameters:
+    command_interfaces:
+      - position
+      #- reset_fault
+    state_interfaces:
+      - position
+      #- velocity
+      #- effort
+    joints:
+      - joint_1
+      - joint_2
+      - joint_3
+      - joint_4
+      - joint_5
+      - joint_6
+    state_publish_rate: 600.0 # Defaults to 50
+    action_monitor_rate: 20.0 # Defaults to 20
+
+    open_loop_control: true
+    allow_integration_in_goal_trajectories: true
+
+velocity_controller:
+  ros__parameters:
+    joints:
+      - joint_1
+      - joint_2
+      - joint_3
+      - joint_4
+      - joint_5
+      - joint_6
+
+effort_controller:
+  ros__parameters:
+    joints:
+      - joint_1
+      - joint_2
+      - joint_3
+      - joint_4
+      - joint_5
+      - joint_6
+

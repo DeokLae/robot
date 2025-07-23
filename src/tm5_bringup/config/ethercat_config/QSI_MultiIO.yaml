@@ -1,0 +1,33 @@
+# Configuration file for EtherCAT QSI Multi-IO Module (AIx1, AOx1, DIx3, DOx3)
+vendor_id: 0x00000794
+product_id: 0x01041e00
+#assign_activate: 0x0300  # DC Synch register
+#auto_fault_reset: true  # true = automatic fault reset, false = fault reset on rising edge command interface "reset_fault"
+
+#sdo:  # sdo data to be transferred at drive startup
+#  - {index: 0x60C2, sub_index: 1, type: int8, value: 10} # Set interpolation time for cyclic modes to 10 ms
+#  - {index: 0x60C2, sub_index: 2, type: int8, value: -3} # Set base 10-3s
+  #- {index: 0x6098, sub_index: 0, type: int8, value: 35}
+rpdo:  # RxPDO = receive PDO Mapping
+  - index: 0x1600
+    channels:
+      - {index: 0x8000, sub_index: 0, type: uint16, default: .nan}  # Control
+      - {index: 0x7000, sub_index: 0, type: uint8, default: .nan}  # 4-bit Digital Outputs
+      - {index: 0x7010, sub_index: 0, type: uint16, default: .nan}  # 16-bit Analog Output Channel 1
+      - {index: 0x8033, sub_index: 0, type: uint32, default: .nan}  # LED Parameters
+      - {index: 0x8034, sub_index: 0, type: uint8, default: .nan}  # LED Command
+
+tpdo:  # TxPDO = transmit PDO Mapping
+  - index: 0x1a00
+    channels:
+      - {index: 0x9000, sub_index: 0, type: uint16}  # Status
+      - {index: 0x6000, sub_index: 0, type: uint8}  # 3-bit Digital Inputs
+      - {index: 0x6010, sub_index: 0, type: uint16}  # 16-bit Analog Input Channel 1
+      - {index: 0x6021, sub_index: 0, type: uint32}  # Internal 24V Current (A)
+      - {index: 0x9002, sub_index: 0, type: uint32}  # PDO Packet Count
+      - {index: 0x8035, sub_index: 0, type: uint8}  # LED Status
+
+sm:  # Sync Manager
+  - {index: 0, type: output, pdo: rpdo, watchdog: enable}
+  - {index: 1, type: input, pdo: tpdo, watchdog: disable}
+

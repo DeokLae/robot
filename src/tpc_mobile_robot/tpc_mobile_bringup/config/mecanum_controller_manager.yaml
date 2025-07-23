@@ -1,0 +1,29 @@
+mecanumRobot_controller_manager:
+  ros__parameters:
+    update_rate: 300  # Hz
+
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+
+    imu_broadcaster:
+      type: imu_sensor_broadcaster/IMUSensorBroadcaster
+
+    mecanum_drive_controller:
+      type: tpc_mobile_mecanum_wheel_controller/TpcMobileMecanumController
+
+imu_broadcaster:
+  ros__parameters:
+    frame_id: imu_link
+    sensor_name: imu
+
+mecanum_drive_controller:
+  ros__parameters:
+    fr_left_wheel_joint_name: fr_left_wheel_joint
+    fr_right_wheel_joint_name: fr_right_wheel_joint
+    rr_left_wheel_joint_name: rr_left_wheel_joint
+    rr_right_wheel_joint_name: rr_right_wheel_joint
+
+    wheel_radius: 0.03
+    wheel_distance:
+      width: 0.6
+      length: 0.575

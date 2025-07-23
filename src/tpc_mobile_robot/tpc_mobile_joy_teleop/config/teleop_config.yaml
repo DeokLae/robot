@@ -1,0 +1,96 @@
+teleop_node:
+  ros__parameters:
+    joy_topic: /joy
+    mobile_twist_topic: /cmd_vel
+    arm_twist_topic: /servo_node/delta_twist_cmds
+    mobile:
+      scale: 0.005
+      max_scale: 0.2
+      min_scale: 0.02
+      move_forward:
+        axis: 1
+        deadzone: 0.3
+        offset: 0.0
+      move_back:
+        axis: 1
+        deadzone: 0.3
+        offset: 0.0
+      move_left:
+        axis: 0
+        deadzone: 0.3
+        offset: 0.0
+      move_right:
+        axis: 0
+        deadzone: 0.3
+        offset: 0.0
+      turn_left:
+        axis: 5
+        deadzone: 0.0
+        offset: 0.0
+      turn_right:
+        axis: 4
+        deadzone: 0.0
+        offset: 0.0
+    arm:
+      scale: 0.05
+      max_scale: 0.5
+      min_scale: 0.05
+      xaxis_plus:
+        axis: 3
+        offset: 0.0
+        deadzone: 0.5
+      xaxis_minus:
+        axis: 3
+        offset: 0.0
+        deadzone: 0.5
+      yaxis_plus:
+        axis: 2
+        offset: 0.0
+        deadzone: 0.5
+      yaxis_minus:
+        axis: 2
+        offset: 0.0
+        deadzone: 0.5
+      zaxis_plus:
+        axis: 7
+        offset: 0.0
+        deadzone: 0.5
+      zaxis_minus:
+        axis: 7
+        offset: 0.0
+        deadzone: 0.5
+    btn:
+      A_config:
+        name: btn_A
+        num: 0
+      B_config:
+        name: btn_B
+        num: 1
+      X_config:
+        name: btn_X
+        num: 3
+      Y_config:
+        name: btn_Y
+        num: 4
+      HOME_config:
+        name: btn_HOME
+        num: 16
+      MINUS_config:
+        name: btn_MINUS
+        num: 15
+      PLUS_config:
+        name: btn_PLUS
+        num: 11
+      L1_config:
+        name: link_6
+        num: 6
+      L2_config:
+        name: base_footprint
+        num: 7
+
+
+joy_node:
+  ros__parameters:
+    joy_topic: /joy
+    dev: /dev/input/js0
+    deadzone: 0.1
